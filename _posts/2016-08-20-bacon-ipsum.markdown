@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Bacon ipsum"
+title:  "博客文章正在整理ing..."
 date:   2016-08-20 11:11:11 +0100
 thumbnail: earth.jpg
 ---
