@@ -6,30 +6,42 @@ date: 2017-07-01 12:00:00
 
 ## Concepts
 
+<br>
 ### Policy
-apply permission to User, Group, Role
+> apply permission to User, Group, Role
 
 * inline-policy
 embeded directly into a single User,Group,Role
 
 * managed-policy
 standalone policies that you can attach to multiple Users,Groups,Roles
-** AWS managed policies
-** Customer managed policies
+  * AWS managed policies
+  * Customer managed policies
 
 ### Role
-1. Which account or AWS Service can assume this role
-trust relationship
-2. policies
+> An IAM role is similar to a user, in that it is an AWS identity with permission policies that determine what the identity can and cannot do in AWS.
 
-* instance profile
+* Which account or AWS Service can assume this role
+trust relationship
+* policies
+
+#### differences between User and Role
+
+* User associated with a person.Role is intended to be assumable by anyone who needs it.
+* Role doesn't have any credentials.
+
+#### instance profile
+
 Applications must sign their API requests with AWS credentials
 Cannot attach multiple IAM roles to a single instance
+
 [example](https://s3.amazonaws.com/cloudformation-templates-us-east-1/ec2_instance_with_instance_profile.template)
 
 ### Identity providers
 > Giving external user identities permissions to use AWS resources.
-name-metadata.xml
+
+#### SAML Identity Provider
+
 ```
 <EntityDescriptor entityID="urn:your_name.auth0.com" xmlns="urn:oasis:names:tc:SAML:2.0:metadata">
   <IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
@@ -40,23 +52,37 @@ name-metadata.xml
 ```
 
 ### Group
+> a collection of IAM users
+
 ### User
+
 * root User
 * IAM user
+
 > It is a security best practice to not use your root account because the root account grants access to all services and resources. Grant users the minimum amount of privilege necessary, which is known as least privilege.
 
-credential
-under the path `~/.aws/`
+credential under the path `~/.aws/`
 * `credential` file
 * `config` file
 associated with group
-### KMS
-### STS
-assume role
-cannot assume role from root user
 
-## Intergration with Auth0
+### KMS
+> AWS Key Management Service (AWS KMS) is a managed service that makes it easy for you to create and control the encryption keys used to encrypt your data
+
+`aws kms encrypt --key-id your_key --plaintext your_content`
+
+### STS
+>The AWS Security Token Service (STS) is a web service that enables you to request temporary, limited-privilege credentials for AWS Identity and Access Management (IAM) users
+
+`aws sts assume-role --role-arn your_role --role-session-name free_input_session`
+
+* default session is 3600 seconds
+* cannot assume role from root user
+
+## Integration with Auth0
+
+[login](https://fliuheyan.auth0.com/login?client=BxmOE1EeLS5R7AlNb3FNrW4P5xF0mGST&protocol=samlp&connection=Username-Password-Authentication&state=Jlh84P6RI0TH-w3d3SmapgxCDvFDFFr4)
+
 * create identity providers
 * create role & attach policy
 * create rule in auth0 //用来绑定aws role和auth0 client
-
