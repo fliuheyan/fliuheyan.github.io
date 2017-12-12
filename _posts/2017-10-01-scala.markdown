@@ -1,0 +1,6 @@
+# Scala Type System
+
+## Functor
+
+
+## Scalaz Reader & Writer Monad
