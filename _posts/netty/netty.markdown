@@ -18,7 +18,7 @@ Channel -> Channel Pipeline -> Channel Config
 4. Selector.select() blocks until new state changes are received or timeout
 5. Checks if there were state changes
 6. Handle state changes
-7. Excute other tasks 
+7. Execute other tasks 
 
 Netty 用一套API同时支持AIO和BIO
 设置SO_TIMEOUT socket flag, 如果超时，则抛出SocketTimeoutException.

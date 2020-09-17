@@ -13,6 +13,7 @@
 * 产品愿景
 * 产品策略
 * User Journey
+    * 用户为了达到目标需要经历的过程.让我们快速的与客户在业务场景上达成共识.
 * Architecture Design
 * Requirement 梳理
 * Delivery
