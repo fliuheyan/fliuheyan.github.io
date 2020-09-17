@@ -1,0 +1,54 @@
+## AWS S3
+> Simple Storage Service. S3 provides secure, durable, highly-scalable object storage.
+
+### Basic
+
+* Files can be from 0 Bytes to 5TB.
+* Unlimited storage
+* Files are stored in Buckets(folder)
+* S3 names must be unique globally. (bucket name) 
+ https://yourbucket.s3.amazonaws.com
+ https://yourbucket.us-westeast-1.amazonaws.com
+* 99.99% availability S3 platform
+* Amazon 99.9 ????
+* 11*9 durability
+
+#### Feature
+* Tiered Storage Available ???
+* Lifecycle Management (Glacier)
+* Versioning
+* Encryption
+* MFA Delete
+* Secure data using ACL & Bucket Policies
+ 
+#### Object 
+* Key - name of the object
+* Value - data a sequence of bytes.
+* Version ID
+* Metadata (Data about data)
+* Subresources:
+    * Access Control Lists
+    * Torrent ??
+
+#### Data consistency
+* Read after Write consistency for puts new objects
+* Eventual Consistency for overwrite PUTS and Deletes. 
+    * If you update `an existing file` or delete a file and read it immediately, you may get the older version
+    or you may not. Basically changes take a little bit of time to propagate.
+ 
+#### Performance
+
+3500 put/copy/post/delete per second
+5500 head per second
+
+* multi part uploads
+    * recommended for files over 100MB
+    * must be used for files over 5GB`
+    * parallelize uploads
+
+* parallelize downloads
+    * S3 byte-range fetches
+        * Parallelize downloads by specifying byte ranges.  
+        * If there's a failure in the download, it's only for a specific byte range.
+
+??? why more prefix more better proformance         

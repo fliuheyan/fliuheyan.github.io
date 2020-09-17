@@ -1,0 +1,100 @@
+---
+layout: post
+title:  "AQS & CLH"
+date:   2020-07-10 11:11:11 +0100
+---
+
+## Redux 
+状态管理的lib
+
+应用中所有的state都以一个对象树的形式存储在一个单一的store中。
+唯一改变state的办法就是触发action。reducer描述action如何改变state树
+
+### 三大原则
+
+* 单一数据源(只有一个store)
+* state只读
+* pure function执行修改，只在reducer中改变state
+
+### Store
+state按照键值分层`slice`， 提供独立的reducer管理各自的数据层
+`combineReducers`让state层与reducer进行关联
+
+
+`Object.assign()`
+
+#### store method
+
+* getState()
+
+* dispatch()
+
+* subscribe()
+
+### 一般项目结构
+
+### API
+
+fetch API
+
+### Action
+
+#### 异步Action
+
+* Start
+* Success
+* Error
+
+### Reducer
+pure function. `(state,action) => newState`， 以inmutable的方式更新state,而不是直接修改state
+
+### Redux 相关组件
+
+* react-redux
+
+* redux-router
+
+* redux-form
+能够在redux中时时持有react form 的state
+
+* react-redux-form
+
+#### Middle Ware
+
+*  redux-thunk
+一个middleware.
+处理异步action.
+action结果可以再次被dispatch,并且可以dispatch除了action以外的function,promise.
+
+* redux-promise
+
+* redux-logger
+
+#### Testing
+
+#### Reource
+
+* Awesome Redux
+
+* provider
+不用显示的将store传入所有的component,而能够让component访问store
+
+
+* connect
+
+ bindActionCreators() 可以自动把多个 action 创建函数 绑定到
+dispatch() 方法上。
+
+容器组件，store.subscribe()从redux state tree中读取相关的数据，并
+通过props将这些数据传递给components.
+
+
+### Middle ware
+它提供的是位于 action 被发起之后，到 达 reducer 之前的扩展点
+
+#### Apply Middleware
+
+#### Thunk Middleware
+
+
+

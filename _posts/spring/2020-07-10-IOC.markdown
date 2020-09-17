@@ -1,0 +1,48 @@
+---
+layout: post
+title:  "AQS & CLH"
+date:   2020-07-10 11:11:11 +0100
+---
+## Spring
+
+### Bean
+* identifier
+* alias
+
+### Bean Definition
+
+* Bean的配置matadata interface.
+    * Bean full Class Name (including package name)
+    * Bean Lifecycle callback.作用域，自动绑定模式(autowire)
+    * Other Bean dependencies
+    * Bean Properties
+
+* Bean Definition的注册
+1. properties
+2. 
+
+
+### Spring IOC bean的初始化顺序 
+
+### Spring的拓展点
+
+#### BeanFactoryPostProcessor
+
+#### BeanDefinitionRegistryPostProcessor
+
+#### BeanPostProcessor
+
+#### InitializingBean
+
+#### ApplicationContextAware
+
+#### ApplicationListener
+
+#### postProcessAfterInitialization
+使用场景:
+
+AB testing
+
+### FAQ
+
+* BeanFactory FactoryBean ApplicationContext区别以及都是干什么的

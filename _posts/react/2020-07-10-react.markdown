@@ -1,0 +1,198 @@
+---
+layout: post
+title:  "react"
+date:   2020-07-10 11:11:11 +0100
+---
+
+## React 
+
+一个react简单实现
+https://juejin.im/post/6844903733998911501
+
+### 核心概念
+
+#### JSX
+* JSX 仅仅只是 React.createElement(component, props, ...children) 函数的语法糖
+
+* 用户定义的组件必须以大写字母开头，以小写字母开头的元素代表一个 HTML 内置组件
+
+* 在 JSX 类型中使用点语法
+
+```
+const element = (
+  <h1 className="greeting">
+    Hello, world!
+  </h1>
+);
+```
+等同于
+```
+const element = React.createElement(
+  'h1',
+  {className: 'greeting'},
+  'Hello, world!'
+);
+```
+#### VDom
+1. If the state change, react will render VDom instead of real Dom.
+2. Dom diff.
+3. Update real Dom.
+
+#### Component
+Props只读
+Props 默认值为 “True”
+属性展开 `{...props}`
+
+* Class component
+
+* Function component
+
+#### Events
+1. camelCase
+2. JSX 语法时你需要传入一个函数作为事件处理函数，而不是一个字符串
+3. 不能return false阻止默认行为，必须`e.preventDefault`
+
+JavaScript 中，class 的方法默认不会绑定 this. 
+`this.deleteRow.bind(this, id)`
+`(e) => this.deleteRow(id, e)`
+
+#### 状态提升
+多个组件需要反映相同的变化数据，这时我们建议将共享状态提升到最近的共同父组件中去
+
+#### 组合VS继承
+Props 和组合为你提供了清晰而安全地定制组件外观和行为的灵活方式。注意：组件可以接受任意 props，包括基本数据类型，React 元素以及函数
+
+import not extend
+
+#### Content
+Context 提供了一个无需为每层组件手动添加 props，就能在组件树间进行数据传递的方法。
+Context 提供了一种在组件之间共享Props，而不必显式地通过组件树的逐层传递 props
+
+caution: 触发子组建不必要的渲染
+
+* When
+当前用户信息, theme, language
+
+#### Error ErrorBoundary
+```
+static getDerivedStateFromError() {
+    // update state to render error
+    return { hasError: true };
+  }
+```
+
+`componentDidCatch` 里面1.通过设置`global.newrelic.noticeError`上传newrelic 2.显示error message
+
+#### Design
+1. 第一步：将设计好的 UI 划分为组件层级
+2. 第二步：用 React 创建一个静态版本
+3. 确定state
+
+#### Ref & Ref转发
+Ref 转发是一项将 ref 自动地通过组件传递到其一子组件
+//TODO
+
+#### Refs & Dom
+通过refs拿到dom饮用
+用途焦点管理等
+
+```
+//创建ref
+this.myRef = React.createRef();
+//ref绑定到dom
+<input
+  type="text"
+  ref={this.textInput} />
+<input
+//拿到dom引用
+const node = this.myRef.current;
+```
+
+#### Render Props
+https://zh-hans.reactjs.org/docs/render-props.html
+
+#### Fragments
+react如果函数返回值必须有根节点，否则会报错
+```
+<>
+</> // 省去<div>的包裹...
+```
+
+#### 高阶组件
+高阶组件是参数为组件，返回值为新组件的函数
+https://zh-hans.reactjs.org/docs/higher-order-components.html
+
+#### React Lifecycle生命周期
+https://zh-hans.reactjs.org/docs/react-component.html
+
+//TODO
+当组件实例被创建并插入 DOM 中时，其生命周期调用顺序如下：
+
+constructor()
+static getDerivedStateFromProps()
+render()
+componentDidMount()
+
+
+当组件的 props 或 state 发生变化时会触发更新。组件更新的生命周期调用顺序如下：
+
+static getDerivedStateFromProps()
+shouldComponentUpdate()
+render()
+getSnapshotBeforeUpdate()
+componentDidUpdate()
+
+### Testing
+
+
+
+
+#### react-script
+
+### Dependencies
+
+* fetch API  (http request)
+
+* redux
+
+* react-router
+
+* react-dom
+
+### Middleware
+action触发之后，到达reducer之前
+`store.dispatch(action)`
+
+#### applyMiddleware
+
+#### Trunk
+包装了store的dispatch方法，可以让你dispatch除了action以外的function / promise 
+
+### React Router
+`<Route path="/" component={App}>` 将path和component进行绑定
+一般都会用`<Provider />` 包裹 `<Router />` 以便Router & Component可以访问store
+
+`<Link />`实现超链接
+
+
+### 项目结构
+
+
+### FAQ
+
+https://juejin.im/post/6844903922453200904
+
+https://juejin.im/post/6844903806715559943
+
+https://zhuanlan.zhihu.com/p/87968863
+
+https://xiaozhuanlan.com/topic/8732519046
+
+https://github.com/semlinker/reactjs-interview-questions
+
+#### PureComponent vs. Component
+pureComponent通过prop和state的浅比较（shallowEqual）来实现shouldComponentUpdate,component是需要开发者在shouldComponentUpdate钩子函数中自己写render逻辑的，在某些情况下可以使用pureComponent来提升性能。浅比较（shallowEqual）：是react源码中的一个函数，它代替了shouldComponentUpdate的工作, 只比较外层数据结构，只要外层相同，则认为没有变化，不会深层次比较数据。
+
+不需要开发者使用shouldComponentUpdate就可使用简单的判断来提升性能；
+
+
