@@ -52,3 +52,28 @@
         * If there's a failure in the download, it's only for a specific byte range.
 
 ??? why more prefix more better proformance         
+
+#### S3 select
+> Retrieve needed data from S3 by using SQL.
+
+Benefit
+* get data by rows or columns
+* save money on data transfer and increase speed. 
+
+### Share S3 buckets/Object across accounts
+1. Bucket Policies & IAM programmatic access only (cannot use console)
+2. Bucket ACLS & IAM programmatic access only
+3. Cross-account IAM roles. Programmatic & Console
+
+### Cross region replication
+automatically replicate changes (donnot sync delete)
+1. entire buckets
+2. prefix or tag
+
+### S3 transfer acceleration
+Use CloudFront edge network to accelerate your uploads to S3.
+`bucket.s3-accelerate.amazonaws.com`
+
+### AWS DataSync
+in the Hybrid env.
+ `Shared files` --NFS or SMB --> `AWS DataSync Agent` --> `AWS DataSync` --> S3
