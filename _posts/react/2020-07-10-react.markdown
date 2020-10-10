@@ -191,8 +191,31 @@ https://xiaozhuanlan.com/topic/8732519046
 https://github.com/semlinker/reactjs-interview-questions
 
 #### PureComponent vs. Component
-pureComponent通过prop和state的浅比较（shallowEqual）来实现shouldComponentUpdate,component是需要开发者在shouldComponentUpdate钩子函数中自己写render逻辑的，在某些情况下可以使用pureComponent来提升性能。浅比较（shallowEqual）：是react源码中的一个函数，它代替了shouldComponentUpdate的工作, 只比较外层数据结构，只要外层相同，则认为没有变化，不会深层次比较数据。
+immutable保证引用一样的时候，值是一样的
+pureComponent通过prop和state的浅比较（shallowEqual）来实现shouldComponentUpdate,
+component不比较
+component是需要开发者在shouldComponentUpdate钩子函数中自己写render逻辑的，
+在某些情况下可以使用pureComponent来提升性能。浅比较（shallowEqual）：是react源码中的一个函数，它代替了shouldComponentUpdate的工作, 只比较外层数据结构，只要外层相同，则认为没有变化，不会深层次比较数据。
 
 不需要开发者使用shouldComponentUpdate就可使用简单的判断来提升性能；
 
+#### 
+legacy context
 
+webpack
+####
+
+1. props
+2. setState
+3. windows.xxx
+
+#### redux
+1. mapStateToProps(订阅状态数哪个节点)
+2. mapDispatchToPros(订阅)
+
+
+#### Higher Order Component
+函数返回一个组建
+
+#### Provider
+subscribe, dispatch

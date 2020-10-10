@@ -72,6 +72,9 @@ physical ec2 server
  first remove the AMI,
  then the snapshot can be deleted
 
+* When EBS as root device, should `stop` the instance 
+  before taking the snapshot.
+
 ### Security Group
 
 * all inbound traffic is blocked by default
@@ -126,7 +129,7 @@ curl http://169.254.169.254/latest/user-data/
 * pay for used part
 * can scale to PB
 * support thousands of NFS connections
-* stored cross AZ
+* stored cross AZ in same region
 * read after write consistency
 
 #### EFS vs. FSX for windows vs. FSX for lustre
@@ -141,6 +144,30 @@ high-speed , high-capacity distributed storage.
 `HPC`, financial modeling
 
 
+#### Placement Group Types
+How to put your ec2 instance to the underlying hardware.
+
+* placement group name unique within a `AWS account`.
+
+* Placement Group cannot merge
+
+* Can't move an existing instance into a placement group.
+    * create AMI from that instance
+    * launch instance into that placement group
+
+##### Compare
+* Clustered Placement Group
+    * aws recommend same type intance
+    * Low Network Latency/ High Network Throughput
+    * EC2 instance in the same AZ
+* Spread Placement Group
+    * individual critical EC2 instances
+    * different AZ, different hardware
+* Partitioned Placement Group
+    * Multiple Ec2 instances HDFS, HBase, and Cassandra
+    
+#### WAF & ACLs    
+    
 #### TODO 
 
 * cluster placement group

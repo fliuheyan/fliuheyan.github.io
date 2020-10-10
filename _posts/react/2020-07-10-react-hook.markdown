@@ -63,10 +63,12 @@ constructor(props) {
 ```
 
 #### `useContext()`
+`必须父子组建之间`
 提供了在组建之间共享数据的一种方法.
 基本的使用方法:
 1. `const myContext = React.createContext(defaultValue)` react创建一个context
-2. 将
+2. <myContent.Provider>
+   <myContent.Context>
 
 
 [context blog](http://www.ptbird.cn/react-createContex-useContext.html#menu_index_5)
@@ -89,6 +91,10 @@ function component中执行带有side effect
     
 
 #### `useMemo`
+```
+  const d = cal(a,b)
+```
+
 ??? 默认父组建渲染，是不是子组建都需要重新渲染
 
 使用 useMemo 当 deps 不变时，直接返回上一次计算的结果，从而使子组件跳过渲染。
@@ -113,3 +119,20 @@ https://zh-hans.reactjs.org/docs/hooks-faq.html
 ### Reference
 
 [official document](https://reactjs.org/docs/hooks-rules.html)
+
+### willReceiveProps, disMount的时候干一些什么事
+```aidl
+useEffect(() => {
+},[])
+```
+
+###
+element ->  node  ->  element
+
+render挂在node上的
+node上面是有生命周期
+
+#### Why Hook
+`Functional Component`
+
+### start transaction
